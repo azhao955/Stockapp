@@ -6,6 +6,6 @@ from django.shortcuts import render
 
 def home(request):
     data = dict()
-    now = datetime.utcnow().replace(tzinfo=pytz.utc)
+    now = datetime.datetime.now()
     data["time_now"] = now
     return render(request, "Home.html", context = data)
