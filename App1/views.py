@@ -23,3 +23,12 @@ def maintenance(request):
         pass
     return render(request, "Maintenance.html", context=data)
 
+def maintenance(request):
+    data = dict()
+    try:
+        request.GET['form_submitted']
+
+
+    except:
+        pass
+    return render(request, "stockinput.html", context=data)
