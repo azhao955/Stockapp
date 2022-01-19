@@ -23,7 +23,7 @@ def maintenance(request):
         pass
     return render(request, "Maintenance.html", context=data)
 
-def maintenance(request):
+def stockinput(request):
     data = dict()
     try:
         request.GET['form_submitted']
@@ -31,4 +31,4 @@ def maintenance(request):
 
     except:
         pass
-    return render(request, "stockinput.html", context=data)
+    return render(request, "StockInput.html", context=data)

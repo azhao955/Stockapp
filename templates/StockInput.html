@@ -1,15 +1,12 @@
 <body>
-<h1>Maintenance operations</h1>
+<h1>Search Stock</h1>
 {#h1 = heading tag#}
-Please select a maintenance action
+Input Stock Ticker
 <form action="" method="get">
-<input type="radio" id="currencies" name="selection" value="currencies">
+<input type="text" id="Stock Ticker" name="Stock Ticker" value="Ex: AAPL">
 {#value tells us which button was checked and appears in url#}
-<label for=“currencies">Update the list of countries and currencies</label><br>
-<input type="radio" id="rates" name="selection" value="rates">
-<label for="rates">Update cross rates</label><br>
 <input name="form_submitted" value="1" type="hidden">
-<input name="update" value="Do selected action" type="submit">
+<input name="update" value="Search" type="submit">
 </form>
 
 </body>

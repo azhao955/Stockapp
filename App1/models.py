@@ -43,4 +43,3 @@ class Stock (models.Model):
    name = models.CharField(max_length = 40)
    ticker = models.CharField(max_length =5)
    price = models.CharField(max_length = 10)
-
