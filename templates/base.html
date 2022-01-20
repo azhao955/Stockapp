@@ -20,8 +20,9 @@
             <span class="large-font">Welcome! {{ user.username }}!</span><br>
 <a href="{% url 'logout' %}"><button>logout</button></a>
 {% else %}
-            <span class="large-font">Hey Guest User!</span><br>
+            <span class="medium-font">Please login</span><br>
 <a href="{% url 'login' %}"><button>login</button></a>
+<a href="{% url 'register_user' %}"><button>Create account</button></a><br>
 {% endif %}
     </span>
 </p>
