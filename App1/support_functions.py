@@ -1,4 +1,5 @@
-from App1.models import Currency, Country
+from App1.models import Currency, Country, Rates
+
 
 def get_currency_list():
     currency_list = list()
@@ -16,7 +17,8 @@ def get_currency_list():
             country = detail[1].get_text().strip()
             currency = detail[2].get_text().strip()
             iso = detail[3].get_text().strip()
-            print(country, currency, iso)
+            # print(country, currency, iso)
+            currency_list.append((country, currency, iso))
         except:
             continue
     return currency_list
@@ -77,3 +79,20 @@ def get_capitals():
     df = pd.read_html("https://en.wikipedia.org/wiki/List_of_national_capitals")[1]
     df.set_index('Country/Territory', inplace=True)
     return df
+
+def update_xrates(currency):
+    try:
+        new_rates = get_currency_rates(currency.symbol)
+        for new_rate in new_rates:
+            from datetime import datetime, timezone
+            time_now = datetime.now(timezone.utc)
+            try:
+                rate_object = Rates.objects.get(currency=currency, x_currency=new_rate[0])
+                rate_object.rate = new_rate[1]
+                rate_object.last_update_time = time_now
+            except:
+                rate_object = Rates(currency=currency, x_currency=new_rate[0], rate=new_rate[1],
+                                    last_update_time=time_now)
+            rate_object.save()
+    except:
+        pass

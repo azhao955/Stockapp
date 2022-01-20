@@ -1,0 +1,24 @@
+h1 {
+    color: salmon; font-size:small;
+}
+
+#footer { /* use with id = "footer" */
+   display:inline-block;
+   width:100%;
+   height:1em;
+   padding: 2em 0.25em;
+   text-align: center;
+   font-size: xx-small;
+}
+
+#container p { display: inline }
+
+.large-font { /* use with class="large-font" */
+font-size: large;
+color: crimson;
+}
+#logo {
+    color: coral;
+    font-family: 'lobster';
+    font-size: 48px;
+}

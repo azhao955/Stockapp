@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -39,7 +40,17 @@ class Rates(models.Model):
     def __str__(self):
         return self.currency.symbol + " " + self.x_currency + " " + str(self.rate)
 
-class Stock (models.Model):
-   name = models.CharField(max_length = 40)
-   ticker = models.CharField(max_length =5)
-   price = models.CharField(max_length = 10)
+
+class Stock(models.Model):
+    name = models.CharField(max_length=40)
+    ticker = models.CharField(max_length=5)
+    price = models.CharField(max_length=10)
+
+class AccountHolder(models.Model):
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    date_of_birth = models.DateField()
+    countries_visited = models.ManyToManyField(Country)
+    def __str__(self):
+        return self.user.username
+    def __repr__(self):
+        return self.user.username
