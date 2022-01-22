@@ -1,16 +1,99 @@
-
 {% extends "base.html" %}
 {% block content %}
-
+{% load render_table from django_tables2 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+    <title>Portfolio</title>
+
+    <style>
+    body {
+    text-align: center;
+    }
+    form {
+    display: inline-block;
+    }
+   .center {
+  margin-left: auto;
+  margin-right: auto;
+    }
+    table{
+    border-collapse:collapse;
+    border:1px solid #4f4f4f;
+    }
+    table td{
+    border:1px solid #4f4f4f;padding: 3px 10px;
+    }
+    table th{
+    border:1px solid #4f4f4f;padding: 3px 10px;
+    }
+
+#balance {
+  font: normal normal normal 20px/1 Helvetica, arial, sans-serif;
+  border-bottom: 2px solid #000;
+  background:#000;
+  color:#fff;
+
+  display:inline-block;
+  padding:3px 15px;
+  margin-left:10px;
+}
+
+</style>
+
 <body>
-Placeholder for user portfolio
+
+
+<form action = "{% url 'buysell' %}">
+	<h2>Order Stocks</h2>
+	<div>
+		<label for "ticker">Ticker</label>
+		<input name="input_ticker" placeholder = "ex:APPL" type="text" id = "input_ticker">
+		<label for "unit">Unit</label>
+		<input name="input_unit" placeholder = "ex:5" type="number" id = "input_unit">
+		<label for "buysell1">BUY</label>
+		<input type="radio" id="buysell1" name = "buysell" value="buy" >
+		<label for "buysell2">SELL</label>
+		<input type="radio" id="buysell2" name = "buysell" value="sell" >
+	</div>
+	<div>
+	<p>	<input name="update" value="Order!" type="submit"> </p>
+	</div>
+	</form>
+
+<h2>
+    Current portfolio
+</h2 >
+
+<table id="portfolio" class = "center" >
+    <thead>
+    <tr>
+        <th>Ticker</th>
+        <th>Unit</th>
+        <th>Total Value</th>
+    </tr>
+    </thead>
+        <tbody>
+         {% for line in holdings  %}
+        <tr>
+            <td>{{ line.0 }}</td>
+            <td>{{ line.1 }}</td>
+            <td>{{ line.2 }}</td>
+    {% endfor %}
+    </tr>
+
+    </tbody>
+
+</table>
+
+<h2 id = "balance">
+    Your Current Cash Balance: ${{ balance }}
+</h2>
+
+
+
+
 </body>
-</html>
 
 {% endblock %}

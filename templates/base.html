@@ -12,20 +12,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
-<body>
-<p style="text-align:left;">
-<span id="logo">Stock App!</span>
+
+
+<p style="text-align:left;" style="text-align:center">
+<span id="logo" style="border:1px">Stock App!</span>
 <span style="float:right;">
 {% if user.username %}
             <span class="large-font">Welcome! {{ user.username }}!</span><br>
+            <span class="large-font">{{ AccountHolder.available_cash }}</span>
 <a href="{% url 'logout' %}"><button>logout</button></a>
 {% else %}
-            <span class="medium-font">Please login</span><br>
 <a href="{% url 'login' %}"><button>login</button></a>
 <a href="{% url 'register_user' %}"><button>Create account</button></a><br>
 {% endif %}
     </span>
 </p>
+
+
 {% block content %}
     <-- This is where the page information will go! -->
 {% endblock %}

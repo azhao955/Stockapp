@@ -1,0 +1,92 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#<meta charset="UTF-8">#}
+{#<title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#<body>#}
+{#Hello Javascript!#}
+{#<script>var x=1;console.log("The value of x is: ",x)</script>#}
+{#<script>#}
+{#function probation(warn_level) {#}
+{#    var scores = [["John", 78], ["Jing", 91], ["Jahangir", 82], ["Jana", 54]];#}
+{#    var names = []#}
+{#    for (i = 0; i < scores.length; i++) {#}
+{#        if (scores[i][1] < warn_level) {#}
+{#            names.push(scores[i][0])#}
+{#        }#}
+{#    }#}
+{#    return names#}
+{#}#}
+{#    console.log("Refer ",scores[i][0]," for academic probation")#}
+{##}
+{#</script>#}
+{#</body>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#<title>Digital Clock</title>#}
+{#<style> /* The format for the clock object */#}
+{#        #clock { /* for an id="clock" property in a tag */#}
+{#            font: bold 24px sans-serif; /* font */#}
+{#            background: #ddf; /* background color of the clock */#}
+{#            padding: 15px; /* space around the clock */#}
+{#            border: solid black 2px; /* border */#}
+{#            border-radius: 10px; /* will round corners of the clock object */#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<h1>A Constantly Updating Clock</h1>#}
+{#<!-- Create a space where we can add the clock -->#}
+{#<!-- Note the id="clock". There can be only one tag with id="clock" -->#}
+{#<!-- The actual time will be added by the JavaScript script -->#}
+{#<span id="clock"></span>#}
+{#<script>#}
+{#// Define a function to display the current time#}
+{#    function displayTime() {#}
+{#        let clock = document.querySelector("#clock"); // Get element with id="clock"#}
+{#        let now = new Date(); // Get current time#}
+{#        clock.textContent = now.toLocaleTimeString(); // Display time in the clock#}
+{#    }#}
+{#displayTime() // Display the time right away by calling the function#}
+{#    setInterval(displayTime, 1000); // And then update it every second. Call the function again every second#}
+{#</script>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#<body>#}
+{#Hi! My name is <span id="name">Juan</span><br>#}
+{#What is my name? <span id="nameAnswer"></span><br>#}
+{#My income is $<span id="income">120000</span><br>#}
+{#I owe $<span id="tax"></span> in income tax#}
+{#<script>#}
+{#var name=document.getElementById("name").textContent;#}
+{#    document.getElementById("nameAnswer").textContent=name#}
+{#    var income=parseFloat(document.getElementById("income").textContent)#}
+{#    var tax=income*0.30#}
+{#    document.getElementById("tax").textContent = parseInt(tax)#}
+{#    </script>#}
+{#</body>#}
+{#•#}
+
+<body>
+Hi! My name is <span id="name">Juan</span><br>
+What is my name? <span id="nameAnswer"></span><br>
+My income is $<input name="income" id="income" value="0.0" onchange="getTax(this.value)"><br>
+I owe $<span id="tax"></span> in income tax
+<script>
+function getTax(value) {
+        console.log(value)
+        var name = document.getElementById("name").value;
+        document.getElementById("nameAnswer").textContent = name
+        var income = parseFloat(value)
+        var tax = income * 0.30
+        document.getElementById("tax").textContent = parseInt(tax)
+    }
+    </script>
+</body>

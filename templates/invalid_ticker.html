@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OrderConfirmation</title>
+</head>
+<body>
+<h1>You have entered an invalid stock ticker!</h1>
+<img src="https://cdn.shopify.com/s/files/1/1061/1924/products/Sad_Face_Emoji_large.png?v=1571606037" alt="sadface">
+<p>
+<a href="{% url 'portfolio' %}">Click here to go back to Portfolio</a><br>
+</p>
+
+</body>
+</html>
+
+{% endblock %}
