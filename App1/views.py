@@ -97,7 +97,7 @@ def register_new_user(request):
         acct_holder = AccountHolder(userid=new_user, available_cash=1000000)
         acct_holder.save()
         print("test2")
-        return render(request,"registration/login.html",context=dict())
+        return render(request,"registration/register.html",context=dict())
     else:
         form = UserCreationForm()
         context['form'] = form
