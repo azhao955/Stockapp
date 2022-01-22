@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>Login to Currency App</h3>
+<h3>Login to Stock App</h3>
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
 {% else %}
@@ -16,9 +16,24 @@
 <td>{{ form.password }}</td>
 </tr>
 </table>
-<input type="submit" value="login">
+<input type="submit" id = "test" value="login" >
 <input type="hidden" value="{{ next }}" name="next">
 </form>
 {% endif %}
+<body>
+<script>
+    {#onclick = "return Verify()"#}
+{#function Verify() {#}
+{#    var a = document.getElementById("test").value;#}
+{#    if (a.includes("&") || a.includes("@") || a.includes ("!")) {#}
+{#        alert("Please do not include &, @, or !. This is username, not email")#}
+{#        return false#}
+{#    }#}
+{#    else {#}
+{#        return true#}
+{#    }#}
+}
+</script>
 
+</body>
 {% endblock %}

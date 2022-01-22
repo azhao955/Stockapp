@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import request
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-
+from django import forms
 from App1 import support_functions
 from App1.models import Country, AccountHolder, Holdings, Stocks
 
@@ -14,26 +14,27 @@ def home(request):
 
     return render(request, "Home.html", context = data)
 
-def maintenance(request):
-    data = dict()
-    try:
-        request.GET['form_submitted']
-        currency_list = support_functions.get_currency_list()
-        support_functions.add_countries_and_currencies(currency_list)
-
-    except:
-        pass
-    return render(request, "Maintenance.html", context=data)
+#def maintenance(request):
+#    data = dict()
+#    try:
+#        request.GET['form_submitted']
+#        currency_list = support_functions.get_currency_list()
+#        support_functions.add_countries_and_currencies(currency_list)
+#
+#    except:
+#        pass
+#    return render(request, "Maintenance.html", context=data)
 
 def stockinput(request):
     data = dict()
     try:
         request.GET['form_submitted']
-
+        data = support_functions.add_stocks(support_functions.get_stocks())
+        return render(request, "Update_success.html", context=data)
 
     except:
         pass
-    return render(request, "StockInput.html", context=data)
+    return render(request, "Maintenance.html", context=data)
 
 def currency_selection(request):
     data = dict()
@@ -73,15 +74,30 @@ def exch_rate(request):
     return render(request,"exchange_detail.html",data)
 
 # register a new user function
+# def register_new_user(request):
+#     context = dict()
+#     form = UserCreationForm(request.POST)
+#     if form.is_valid():
+#         new_user = form.save()
+#         acct_holder = AccountHolder(userid = new_user, available_cash = 1000000)
+#         acct_holder.save()
+#         return render(request, "Entry.html", context=dict())
+#
+#     else:
+#         form = UserCreationForm()
+#         context['form'] = form
+#         return render(request, "registration/register.html", context)
+
+
 def register_new_user(request):
     context = dict()
     form = UserCreationForm(request.POST)
     if form.is_valid():
         new_user = form.save()
-        acct_holder = AccountHolder(userid = new_user, available_cash = 1000000)
+        acct_holder = AccountHolder(user=new_user, available_cash=1000000)
         acct_holder.save()
-        return render(request, "Entry.html", context=dict())
-
+        print("test2")
+        return render(request,"home.html",context=dict())
     else:
         form = UserCreationForm()
         context['form'] = form

@@ -15,7 +15,7 @@ h1 {
 
 .large-font { /* use with class="large-font" */
 font-size: large;
-color: crimson;
+color: #dc143c;
 }
 #logo {
     color: red;

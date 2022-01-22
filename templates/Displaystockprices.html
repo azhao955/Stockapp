@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+{% load render_table from django_tables2 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StockPrices</title>
+</head>
+<body>
+<p>
+<a href="{% url 'portfolio' %}">Click here to go back to Portfolio</a><br>
+</p>
+<h1>Current S&P 500 Stock Prices</h1>
+<table id="current stock prices">
+    <thead>
+    <tr>
+
+        <th>Ticker</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+        <tbody>
+         {% for line in lst  %}
+        <tr>
+            <td>{{ line.0 }}</td>
+            <td>{{ line.1 }}</td>
+        </tr>
+    {% endfor %}
+    </tr>
+
+    </tbody>
+
+</body>
+</html>
+
+{% endblock %}
